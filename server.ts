@@ -18,8 +18,11 @@ import * as storage from "./db";
 const app = express();
 app.use(express.json()); // учим сервер понимать данные, присланные из браузера
 
-// Отдаём браузеру файлы из папки public (там лежит сама страница).
-app.use(express.static(path.join(__dirname, "..", "public")));
+// Отдаём браузеру три файла страницы Zap — они лежат рядом с этим файлом.
+// Мы перечисляем их явно, чтобы наружу не попали лишние файлы (например, база данных).
+app.get("/", (_req, res) => res.sendFile(path.join(__dirname, "index.html")));
+app.get("/styles.css", (_req, res) => res.sendFile(path.join(__dirname, "styles.css")));
+app.get("/app.js", (_req, res) => res.sendFile(path.join(__dirname, "app.js")));
 
 // Отдаём браузеру прикреплённые файлы и фото.
 app.use("/uploads", express.static(storage.uploadsDir));

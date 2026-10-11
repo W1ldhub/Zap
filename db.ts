@@ -14,7 +14,7 @@ import fs from "node:fs";
 //    Если задана переменная ZAP_DATA_DIR — берём папку оттуда (нужно для проверок).
 const dataDir = process.env.ZAP_DATA_DIR
   ? path.resolve(process.env.ZAP_DATA_DIR)
-  : path.join(__dirname, "..", "data");
+  : path.join(__dirname, "data");
 export const uploadsDir = path.join(dataDir, "uploads");
 fs.mkdirSync(uploadsDir, { recursive: true });
 
