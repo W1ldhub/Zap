@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zap</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ЭКРАН 1: вход. Здесь человек представляется (вводит имя). -->
+  <section id="screen-login" class="screen">
+    <form id="login-form" class="login-box">
+      <div class="logo">⚡</div>
+      <h1>Zap</h1>
+      <p class="hint">Быстрый мессенджер.<br />Представьтесь, чтобы начать общаться.</p>
+      <input id="login-name" type="text" placeholder="Ваше имя" maxlength="32" autocomplete="off" required />
+      <button type="submit">Войти</button>
+      <p id="login-error" class="error"></p>
+    </form>
+  </section>
+
+  <!-- ЭКРАН 2: сам чат. Слева — люди, справа — переписка. -->
+  <section id="screen-chat" class="screen hidden">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div>
+          <div class="caption">Вы вошли как</div>
+          <div id="my-name" class="my-name"></div>
+        </div>
+        <button id="logout-button" class="link-button" type="button">Выйти</button>
+      </div>
+      <div class="caption caption-list">С кем общаться:</div>
+      <ul id="people-list" class="people-list"></ul>
+      <div id="no-people" class="empty-hint hidden">Пока никого нет. Позовите друга — пусть тоже зайдёт.</div>
+    </aside>
+
+    <main class="dialog">
+      <div id="placeholder" class="placeholder">Выберите человека слева, чтобы начать общение</div>
+
+      <div id="dialog-header" class="dialog-header hidden"></div>
+
+      <div id="messages" class="messages hidden"></div>
+
+      <div id="send-area" class="send-area hidden">
+        <div id="attach-preview" class="attach-preview hidden">
+          <span id="attach-preview-content"></span>
+          <button type="button" id="attach-remove" title="Убрать файл">✕</button>
+        </div>
+        <form id="send-form" class="send-form">
+          <button type="button" id="attach-button" class="attach-button" title="Прикрепить файл или фото">📎</button>
+          <input id="attach-input" type="file" class="hidden" />
+          <input id="send-text" type="text" placeholder="Напишите сообщение..." maxlength="2000" autocomplete="off" />
+          <button type="submit">Отправить</button>
+        </form>
+      </div>
+    </main>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
